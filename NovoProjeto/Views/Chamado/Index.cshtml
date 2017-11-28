@@ -1,0 +1,66 @@
+﻿@model IEnumerable<NovoProjeto.Models.Chamado>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading"> Relação de Chamados registrados</div>
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeChamado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataChamado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusChamado)
+                    </th>
+                    <th></th>
+                </tr>
+
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeChamado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataChamado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusChamado)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ChamadoId }) |
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.ChamadoId }) |
+                            @Html.ActionLink("Remover", "Delete", new { id = item.ChamadoId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer panel-info">
+        @Html.ActionLink("Registrar um novo Chamado","Create", null, new{@class ="btn btn-success"})
+    </div>
+</div>
+@*@section styles{<link href="@Url.Content("~/content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />}
+@section ScriptPage {
+    <script src="@Url.Content("~/scripts/DataTables/jquery.dataTables.js")"></script>
+    <script src="@Url.Content("~/scripts/DataTables/dataTables.bootstrap.js")"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').dataTable();
+        });
+    </script>
+<script type="text/javascript">
+    $('.table').dataTable({
+        "order": [[1, "asc"]]
+    });</script>
+    }*@
