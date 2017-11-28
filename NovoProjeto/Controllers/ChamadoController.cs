@@ -94,6 +94,7 @@ namespace NovoProjeto.Controllers
             Chamado chamados = context.Chamados.Find(id);
             context.Chamados.Remove(chamados);
             context.SaveChanges();
+            TempData["Message"] = "Fabricante " + chamados.NomeChamado.ToUpper() + " foi removido";
             return RedirectToAction("Index");
         }
     }

@@ -86,14 +86,15 @@ namespace NovoProjeto.Models
             }
             return View(funcionario);
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(long id)
-        //{
-        //    Funcionario funcionario = context.Funcionarios.Find(id);
-        //    context.Chamados.Remove(funcionario);
-        //    context.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(long id)
+        {
+            Funcionario funcionario = context.Funcionarios.Find(id);
+            context.Funcionarios.Remove(funcionario);
+            context.SaveChanges();
+            TempData["Message"] = "Fabricante " + funcionario.Nome.ToUpper() + " foi removido";
+            return RedirectToAction("Index");
+        }
     }
 }

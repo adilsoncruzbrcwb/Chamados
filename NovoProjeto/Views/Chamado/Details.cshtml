@@ -1,50 +1,48 @@
 ﻿@model NovoProjeto.Models.Chamado
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Visualizando detalhes do chamado";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Chamado</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.NomeChamado)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NomeChamado)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DataChamado)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DataChamado)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.StatusChamado)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.StatusChamado)
-            </dd>
-    
-        </dl>
+<div class="panel panel-primary">
+    <div class="panel-heading">Visualizando detalhes do chamado</div>
+    <div class="panel-body">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NomeChamado)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon-glyphicon-chevron-up"></i>
+                </span>
+                @Html.EditorFor(model => model.NomeChamado, new { htmlAttributes = new {@class = "form-control", disabled = "disabled" }})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataChamado)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon-glyphicon-folder-open"></i>
+                </span>
+                @Html.EditorFor(model => model.DataChamado, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.StatusChamado)
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon-glyphicon-folder-open"></i>
+                </span>
+                @Html.EditorFor(model => model.StatusChamado, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ChamadoId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    <div class="panel-footer panel-info">
+        @Html.ActionLink("Alterar", "Edit", new { id = Model.ChamadoId}, new { @class = "btn btn-info"})
+        @Html.ActionLink("Retornar para a listagem", "Index", null, new { @class = "btn btn-info" })
+    </div>
+</div>
